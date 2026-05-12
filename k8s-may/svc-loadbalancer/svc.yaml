@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysvc-redpod
+spec:
+  type: LoadBalancer
+  selector:
+    app: red-svc-lb
+  ports:
+    - port: 80
+      
