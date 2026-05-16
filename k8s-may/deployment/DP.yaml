@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydpyellow
+
+spec:
+  minReadySeconds: 5
+  replicas: 6
+
+  selector:
+    matchLabels:
+      app: yellow-app
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+  template:
+    metadata:
+      name: myyellowpods
+      labels:
+        app: yellow-app
+
+    spec:
+      containers:
+        - name: myyellow-containers
+          image: longflew/ingress:YELLOWPAGE
+
+          ports:
+            - containerPort: 80
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            successThreshold: 1
+            failureThreshold: 5
+
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 250m
+            limits:
+              memory: 128Mi
+              cpu: 500m
+
+
+        

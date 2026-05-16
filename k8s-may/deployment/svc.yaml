@@ -1,0 +1,11 @@
+apiVersion:
+kind: Service
+metadata:
+  name:
+spec:
+  type: NodePort
+  selector:
+    app: yellow-app
+  ports:
+    - port:
+      NodePort: 32000
