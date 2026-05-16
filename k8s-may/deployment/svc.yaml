@@ -2,6 +2,7 @@ apiVersion:
 kind: Service
 metadata:
   name:
+  namespace: dev
 spec:
   type: NodePort
   selector:
