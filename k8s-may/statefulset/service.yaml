@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mydatabase-svc
+  namespace: PROD
+spec:
+  type: ClusterIp
+  ClusterIp: None
+  selector:
+    app: database
+  ports:
+    - port: 3306
